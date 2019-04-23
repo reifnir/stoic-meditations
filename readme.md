@@ -22,11 +22,3 @@
 * Speech parsing mechanism
   * RA: Speech services API accessor
 
-
-
-
-## Plan and priority of execution
-
-1. Create data store to capture results of proxy API
-1. 
-
