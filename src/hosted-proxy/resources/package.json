@@ -1,0 +1,17 @@
+{
+    "name": "stoic-meditations-api",
+    "version": "1.0.0",
+    "description": "This Nodejs app extracts the underlying JSON metadata and URLs behind Massimo Pigliucci's Stoic Meditations podcast on Anchor.fm",
+    "main": "index.js",
+    "dependencies": {
+      "express": "^4.16.4"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "start": "node index.js --use_strict",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT"
+  }
+  
