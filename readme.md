@@ -22,3 +22,27 @@
 * Speech parsing mechanism
   * RA: Speech services API accessor
 
+## Functions
+(TimerTrigger -> every hour)
+CheckForNewPodcasts
+    var podcasts = await GetRemotePodcastIds() ?? new List();
+    var knownPodcasts = await GetKnownPodcastIds() ?? new List();
+    var newPodcasts = podcasts.Except(knownPodcasts);
+    await newPodcasts.ForEach(IdentifyNewPodcast);
+
+
+GetRemotePodcastIds
+    var json = await GetJsonFromAnchor(https://anchor.fm/stoicmeditations/);
+    var podcastIds = (LINQ to interrogate the structure and just return the unique identifiers);
+    return podcastIds;
+
+
+GetKnownPodcastIds()
+
+GetKnownPodcastIds
+IdentifyNewPodcast
+
+-----------------------------------------------------------
+
+
+
