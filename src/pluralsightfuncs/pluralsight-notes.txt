@@ -1,0 +1,8 @@
+Example pipeline
+---------------------------------------------------------------------
+Payment Provider Web-hook -> [FN] -> Message in Queue
+ Generate License Message -> [FN] -> License File in Blob Storage
+             License File -> [FN] -> Send email to customer
+    Report error web-hook -> [FN] -> New row in table storage
+     Validate license API -> [FN] -> Database lookup
+   Nightly scheduled task -> [FN] -> Generate report
