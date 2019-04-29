@@ -14,7 +14,7 @@ namespace pluralsightfuncs
         public static void Run(
             [QueueTrigger("orders", Connection = "AzureWebJobsStorage")]
             Order order,
-            [Blob("orders/{rand-guid}.json", FileAccess.Write)]
+            [Blob("licenses/{rand-guid}.lic", FileAccess.Write)]
             TextWriter outputBlob,
             ILogger log)
         {
@@ -23,11 +23,15 @@ namespace pluralsightfuncs
             outputBlob.WriteLine($"ProductId: {order.ProductId}");
             outputBlob.WriteLine($"PurchaseDate: {DateTime.UtcNow}");
 
+            var secretCode = GenerateSecretCode(order);
+            outputBlob.WriteLine($"SecretCode: {secretCode}");
+        }
+
+        private static string GenerateSecretCode(Order order)
+        {
             var bytes = Encoding.UTF8.GetBytes(order.Email + "secret");
             var hash = MD5.Create().ComputeHash(bytes);
-            outputBlob.WriteLine($"SecretCode: {BitConverter.ToString(hash).Replace("-", "")}");
-
-            
+            return BitConverter.ToString(hash).Replace("-", "");
         }
     }
 }
