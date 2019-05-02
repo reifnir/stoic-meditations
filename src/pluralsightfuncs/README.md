@@ -18,3 +18,6 @@ Example pipeline
   * Do I/O in activity functions
 * Don't write infinite loops
   * Use DurableOrchestrationContext.ContinueAsNew()
+
+### Example of a parallel fan out of work pulled together back to the orchestrator/supervisor
+https://www.youtube.com/watch?v=UQ4iBl7QMno#t=40m18s
