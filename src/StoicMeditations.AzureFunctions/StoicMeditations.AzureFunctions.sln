@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoicMeditations.AzureFunctions", "StoicMeditations.AzureFunctions\StoicMeditations.AzureFunctions.csproj", "{CCCE2267-6C61-49EB-9B9A-8101B83BDC8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCCE2267-6C61-49EB-9B9A-8101B83BDC8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCE2267-6C61-49EB-9B9A-8101B83BDC8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCE2267-6C61-49EB-9B9A-8101B83BDC8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCE2267-6C61-49EB-9B9A-8101B83BDC8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {022F1DF4-6A21-48DF-9AC9-92B40EDF7BE2}
+	EndGlobalSection
+EndGlobal
