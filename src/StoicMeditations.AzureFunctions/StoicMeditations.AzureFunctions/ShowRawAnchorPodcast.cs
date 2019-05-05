@@ -11,11 +11,11 @@ using StoicMeditations.AzureFunctions.AnchorFm;
 
 namespace StoicMeditations.AzureFunctions
 {
-    public static class AcquireAnchorPodcast
+    public static class ShowRawAnchorPodcast
     {
         [FunctionName("AcquireAnchorPodcast")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = nameof(AcquireAnchorPodcast) + "/{anchorPodcastId}")]
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = nameof(ShowRawAnchorPodcast) + "/{anchorPodcastId}")]
             HttpRequest req,
             string anchorPodcastId,
             ILogger log)

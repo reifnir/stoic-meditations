@@ -9,9 +9,9 @@ using StoicMeditations.AzureFunctions.AnchorFm;
 
 namespace StoicMeditations.AzureFunctions
 {
-    public static class AcquireAllAnchorPodcasts
+    public static class ShowAllRawAnchorPodcasts
     {
-        [FunctionName(nameof(AcquireAllAnchorPodcasts))]
+        [FunctionName(nameof(ShowAllRawAnchorPodcasts))]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get")]
             HttpRequest req,
