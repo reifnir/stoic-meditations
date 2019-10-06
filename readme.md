@@ -17,23 +17,24 @@
   * RA: Podcast API accessor
 * Persistence of state
   * RA: Catalog access
-* Persistence of blobs
-  * RA: File access
 * Speech parsing mechanism
   * RA: Speech services API accessor
+* Persistence of blobs
+  * Utility: File access
 
 ## Functions Notes
 ```
 FindNewPodcasts
     Input: Timer
-    Output: Queue: NewPodcast[]
+    Output: Queues IngestPodcast commands
     ->
         var podcasts = await GetRemotePodcastIds();
         var knownPodcasts = await GetKnownPodcastIds();
         var newPodcasts = podcasts.Except(knownPodcasts);
-        newPodcasts.ForEach(x =>
-            queuedNewPodcastQueue.Enqueue(new NewPodcast(x))
-        );
+        newPodcasts.ForEach(x => {
+            var message = new IngestPodcast() { Id = x };
+            queueHelper.Enqueue(message);
+        });
 
 AcquirePodcast (Durable)
     Input: Queue: NewPodcast
