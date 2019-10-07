@@ -1,3 +1,15 @@
+/*
+IF Missing value for AzureWebJobsStorage in local.settings.json:
+Base configuration needed for local emulation:
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true"
+  }
+}  
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
