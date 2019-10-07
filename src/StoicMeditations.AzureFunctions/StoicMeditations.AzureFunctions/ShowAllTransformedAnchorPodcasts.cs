@@ -26,11 +26,12 @@ namespace StoicMeditations.AzureFunctions
             var podcastResponse = await http.GetAsync(url);
             log.LogInformation("Reading contents of podcast data");
             var rawBody = await podcastResponse.Content.ReadAsStringAsync();
-            0/0
+
+            log.LogError("STOPPED MID DEVELOPMENT /shy-face");
             return new Results<Podcast>(new Podcast());
 
 
-
+            /*
             log.LogInformation("C# HTTP trigger function processed a request.");
 
             string name = req.Query["name"];
@@ -42,6 +43,7 @@ namespace StoicMeditations.AzureFunctions
             return name != null
                 ? (ActionResult)new OkObjectResult($"Hello, {name}")
                 : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+            */
         }
     }
 }

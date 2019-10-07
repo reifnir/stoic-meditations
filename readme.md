@@ -1,9 +1,12 @@
 
 ## Use Cases
 * Look for uncaptured podcasts
-* Get detailed info about uncaptured podcasts
-* Trim out parts of the audio I don't want to hear
+* Get detailed info about uncaptured podcasts (including capture of audio assets)
+* Trim down to just the desired parts
   * Remove the intro, outtro music and speech
+* Play podcasts
+* Notify when new podcasts come up
+* Manage a podcast episode (rate/classify it)
 
 
 ## Volatilities
@@ -24,7 +27,7 @@
 
 ## Functions Notes
 ```
-FindNewPodcasts
+FindNewPodcasts (Durable)
     Input: Timer
     Output: Queues IngestPodcast commands
     ->
