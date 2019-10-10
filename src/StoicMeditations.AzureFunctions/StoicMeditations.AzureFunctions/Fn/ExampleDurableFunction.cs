@@ -20,7 +20,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace StoicMeditations.AzureFunctions
+namespace StoicMeditations.AzureFunctions.Fn
 {
     public static class ExampleDurableFunction
     {
