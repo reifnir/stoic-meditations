@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using StoicMeditations.AzureFunctions.AnchorFm;
 
-namespace StoicMeditations.AzureFunctions
+namespace StoicMeditations.AzureFunctions.Fn
 {
     public static class ShowAllRawAnchorPodcasts
     {

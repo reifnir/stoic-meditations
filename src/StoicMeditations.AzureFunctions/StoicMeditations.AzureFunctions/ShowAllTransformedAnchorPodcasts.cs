@@ -9,26 +9,32 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net.Http;
 using StoicMeditations.AzureFunctions.Models;
+using StoicMeditations.AzureFunctions.AnchorFm;
+using System.Collections.Generic;
 
-namespace StoicMeditations.AzureFunctions
+namespace StoicMeditations.AzureFunctions.Fn
 {
     public static class ShowAllTransformedAnchorPodcasts
     {
         [FunctionName(nameof(ShowAllTransformedAnchorPodcasts))]
-        public static async Task<Results<Podcast>> Run(
+        public static async Task<List<string>> Run(
+        //public static async Task<Results<Podcast>> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get")]
             HttpRequest req,
             ILogger log)
         {
-            string url = "x";
-            var http = new HttpClient();
-            log.LogInformation($"Getting accessor for raw json data from anchor podcast. Calling {nameof(ShowAllRawAnchorPodcasts)}");
-            var podcastResponse = await http.GetAsync(url);
-            log.LogInformation("Reading contents of podcast data");
-            var rawBody = await podcastResponse.Content.ReadAsStringAsync();
+            var anchor = new AnchorFmHelper(log);
+            var results = await anchor.GetAllPodcastEpisodeIds();
+            return results;
+            //string url = "x";
+            //var http = new HttpClient();
+            //log.LogInformation($"Getting accessor for raw json data from anchor podcast. Calling {nameof(ShowAllRawAnchorPodcasts)}");
+            //var podcastResponse = await http.GetAsync(url);
+            //log.LogInformation("Reading contents of podcast data");
+            //var rawBody = await podcastResponse.Content.ReadAsStringAsync();
 
-            log.LogError("STOPPED MID DEVELOPMENT /shy-face");
-            return new Results<Podcast>(new Podcast());
+            //log.LogError("STOPPED MID DEVELOPMENT /shy-face");
+            //return new Results<Podcast>(new Podcast());
 
 
             /*

@@ -12,7 +12,6 @@ namespace StoicMeditations.AzureFunctions.Models
         public DateTime PublishOn { get; set; }
         public Guid EpisodeUuid { get; set; }
         public int SeasonNumber { get; set; }
-        //Note, this can contain HTML encoded into it (paragraphs to force carriage returns)
         public string Description { get; set; }
         public string DescriptionPreview { get; set; }
         public int Duration { get; set; }

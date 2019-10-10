@@ -9,11 +9,11 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StoicMeditations.AzureFunctions.AnchorFm;
 
-namespace StoicMeditations.AzureFunctions
+namespace StoicMeditations.AzureFunctions.Fn
 {
     public static class ShowRawAnchorPodcast
     {
-        [FunctionName("AcquireAnchorPodcast")]
+        [FunctionName(nameof(ShowRawAnchorPodcast))]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = nameof(ShowRawAnchorPodcast) + "/{anchorPodcastId}")]
             HttpRequest req,

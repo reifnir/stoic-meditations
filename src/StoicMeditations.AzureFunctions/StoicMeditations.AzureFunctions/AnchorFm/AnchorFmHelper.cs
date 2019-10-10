@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using StoicMeditations.AzureFunctions.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -14,6 +17,34 @@ namespace StoicMeditations.AzureFunctions.AnchorFm
         public AnchorFmHelper(ILogger logger)
         {
             log = logger;
+        }
+        public async Task<RawPodcastList> GetPodcastList()
+        {
+            log.LogInformation("Getting information on all podcasts");
+            var json = await GetJsonContent(Constants.PodcastRoot);
+            var rawPodcasts = JsonConvert.DeserializeObject<RawPodcastList>(json);
+            return rawPodcasts;
+        }
+        public async Task<List<string>> GetAllPodcastEpisodeIds()
+        {
+            var rawPodcasts = await GetPodcastList();
+            var foundResults = rawPodcasts
+                ?.EpisodePreview
+                ?.Episodes
+                ?.Select(x => x?.ShareLinkPath?.Replace(Constants.PodcastEpisodePrefix, ""))
+                ?.ToList();
+
+            if (foundResults != null)
+                return foundResults;
+
+            if (rawPodcasts == null)
+                log.LogWarning("Result from GetPodcastList was null.");
+            else if (rawPodcasts.EpisodePreview == null)
+                log.LogWarning("Result from GetPodcastList.EpisodePreview was null.");
+            else if (rawPodcasts.EpisodePreview.Episodes == null)
+                log.LogWarning("Result from GetPodcastList.EpisodePreview.Episodes was null.");
+
+            return new List<string>();
         }
         public async Task<string> GetJsonContent(string url)
         {
