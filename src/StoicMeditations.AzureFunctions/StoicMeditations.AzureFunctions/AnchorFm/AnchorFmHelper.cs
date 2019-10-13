@@ -18,13 +18,6 @@ namespace StoicMeditations.AzureFunctions.AnchorFm
         {
             log = logger;
         }
-        public async Task<RawPodcastList> GetPodcastList()
-        {
-            log.LogInformation("Getting information on all podcasts");
-            var json = await GetJsonContent(Constants.PodcastRoot);
-            var rawPodcasts = JsonConvert.DeserializeObject<RawPodcastList>(json);
-            return rawPodcasts;
-        }
         public async Task<List<string>> GetAllPodcastEpisodeIds()
         {
             var rawPodcasts = await GetPodcastList();
@@ -46,7 +39,16 @@ namespace StoicMeditations.AzureFunctions.AnchorFm
 
             return new List<string>();
         }
-        public async Task<string> GetJsonContent(string url)
+
+        #region Internal methods (for testing purposes)
+        internal async Task<RawPodcastList> GetPodcastList()
+        {
+            log.LogInformation("Getting information on all podcasts");
+            var json = await GetJsonContent(Constants.PodcastRoot);
+            var rawPodcasts = JsonConvert.DeserializeObject<RawPodcastList>(json);
+            return rawPodcasts;
+        }
+        internal async Task<string> GetJsonContent(string url)
         {
             var content = await GetContent(url);
 
@@ -54,7 +56,10 @@ namespace StoicMeditations.AzureFunctions.AnchorFm
             var justData = ExtractJsonData(content);
             return justData;
         }
-        public async Task<string> GetContent(string url)
+        #endregion
+        
+        #region Private methods
+        private async Task<string> GetContent(string url)
         {
             var http = new HttpClient();
 
@@ -78,5 +83,6 @@ namespace StoicMeditations.AzureFunctions.AnchorFm
                 return "No regex match for group 'justData'";
             return group.Value;
         }
+        #endregion
     }
 }
