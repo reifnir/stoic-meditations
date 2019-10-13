@@ -43,7 +43,8 @@ namespace StoicMeditations.AzureFunctions.Fn
             return results;
         }
 
-        [FunctionName("ExampleDurableFunction_FindHashCodeActivity")]
+        //stop showing up in the list of URIs
+        //[FunctionName("ExampleDurableFunction_FindHashCodeActivity")]
         public static string SayHello([ActivityTrigger] string value, ILogger log)
         {
             var result = value.GetHashCode();
@@ -51,7 +52,7 @@ namespace StoicMeditations.AzureFunctions.Fn
             return $"HashCode of {value} = {result}";
         }
 
-        [FunctionName("ExampleDurableFunction_HttpStart")]
+        //[FunctionName("ExampleDurableFunction_HttpStart")]
         public static async Task<HttpResponseMessage> HttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
             [OrchestrationClient]DurableOrchestrationClient starter,
